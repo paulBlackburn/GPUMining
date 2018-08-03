@@ -1,3 +1,4 @@
+./server.sh
 ./clock.sh
 while true
 do

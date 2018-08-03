@@ -1,3 +1,6 @@
+#Overclocks GPUs
+sudo nvidia-smi -pm ENABLED
+
 sudo nvidia-smi -i 0, -pl 90
 sudo nvidia-smi -i 1, -pl 90
 sudo nvidia-smi -i 2, -pl 90
