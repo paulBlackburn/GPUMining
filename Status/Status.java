@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.sql.Timestamp;
 
 public class Status
 {
@@ -50,9 +51,9 @@ public class Status
 	
 	private ArrayList<GPU> list;
 	private File file;
-	private String time_stamp;
 	private Integer cards;
 	private Scanner s;
+	private String time_stamp;
 
 	public Status(String filepath)
 	{
@@ -72,6 +73,7 @@ public class Status
 		setupParse(file);
 		parseGPUs(file);
 		parseClockSpeeds(file);
+		getTime();
 		s.close();
 	}
 
@@ -81,13 +83,11 @@ public class Status
 
 		line = null;
 
-		while(s.hasNextLine() && (time_stamp == null || cards == null))
+		while(s.hasNextLine() && (cards == null))
 		{
 			line = s.nextLine();
 
-			if (line.contains("Timestamp"))
-				parseTime(line);
-			else if (line.contains("Attached GPUs"))
+			if (line.contains("Attached GPUs"))
 				parseGPUCount(line);
 		}
 	}
@@ -164,15 +164,10 @@ public class Status
 		}
 	}
 
-	private void parseTime(String line)
+	private void getTime()
 	{
-		int index;
-
-		index = 0;
-
-		index = line.indexOf(':');
-		line = line.substring(index + 2);
-		time_stamp = line;
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		time_stamp = timestamp.toString();
 	}
 
 	private void parseGPUCount(String line)

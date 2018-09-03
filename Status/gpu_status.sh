@@ -12,3 +12,5 @@ javac *.java
 java Run
 
 rm -f *.class
+
+exit 0
