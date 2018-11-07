@@ -3,10 +3,10 @@ echo Overclocking GPUs
 echo Setting Power Limits
 sudo nvidia-smi -pm ENABLED
 
-sudo nvidia-smi -i 0, -pl 75
-sudo nvidia-smi -i 1, -pl 60
-sudo nvidia-smi -i 2, -pl 75
-sudo nvidia-smi -i 3, -pl 60
+sudo nvidia-smi -i 0, -pl 120
+sudo nvidia-smi -i 1, -pl 96
+sudo nvidia-smi -i 2, -pl 120
+sudo nvidia-smi -i 3, -pl 96
 
 DISPLAY=:0 XAUTHORITY=/var/lib/mdm/:0.Xauth nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1
 DISPLAY=:0 XAUTHORITY=/var/lib/mdm/:0.Xauth nvidia-settings -a [gpu:1]/GPUPowerMizerMode=1
@@ -34,7 +34,7 @@ DISPLAY=:0 XAUTHORITY=/var/lib/mdm/:0.Xauth nvidia-settings -a [gpu:3]/GPUGraphi
 
 echo Setting Memory Clock
 
-memory_clock="750"
+memory_clock="1250"
 
 DISPLAY=:0 XAUTHORITY=/var/lib/mdm/:0.Xauth nvidia-settings -a [gpu:0]/GPUMemoryTransferRateOffset[3]=$memory_clock
 DISPLAY=:0 XAUTHORITY=/var/lib/mdm/:0.Xauth nvidia-settings -a [gpu:1]/GPUMemoryTransferRateOffset[3]=$memory_clock
